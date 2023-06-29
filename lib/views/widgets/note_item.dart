@@ -14,7 +14,7 @@ class NoteItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ListTile(
-            contentPadding: EdgeInsets.all(0),
+            contentPadding: const EdgeInsets.all(0),
             title: const Text(
               'Note Title',
               style: TextStyle(color: Colors.black, fontSize: 26),
