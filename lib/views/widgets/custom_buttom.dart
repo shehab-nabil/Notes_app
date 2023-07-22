@@ -4,19 +4,19 @@ class CustomCircularButtom extends StatelessWidget {
   CustomCircularButtom(
       {super.key,
       required this.label,
-      this.width,
-      this.height,
+      this.width = double.infinity,
+      this.height = 40,
       this.backgroundColor = Colors.white,
       this.fontColor = Colors.white,
       this.radius = 10,
       required this.onTap});
-  String? label;
-  Color backgroundColor;
-  double? height = 40;
-  double? width = double.infinity;
-  Color fontColor;
-  double radius;
-  VoidCallback? onTap;
+  final String label;
+  final Color backgroundColor;
+  final double height;
+  final double width;
+  final Color fontColor;
+  final double radius;
+  VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class CustomCircularButtom extends StatelessWidget {
         height: height,
         child: Center(
             child: Text(
-          '$label',
+          label,
           style: TextStyle(
             color: fontColor,
             fontSize: 22,

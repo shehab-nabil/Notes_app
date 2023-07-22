@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomFormTextField extends StatelessWidget {
-  CustomFormTextField(
+  const CustomFormTextField(
       {super.key,
       this.hintText,
       this.cursorColor,
@@ -20,24 +20,24 @@ class CustomFormTextField extends StatelessWidget {
 
   final int maxLines;
 
-  String? hintText;
-  Color? hintColor;
+  final String? hintText;
+  final Color? hintColor;
 
-  String? label;
-  Color? labelColor;
+  final String? label;
+  final Color? labelColor;
 
-  IconData? prefixIcon;
-  Color? prefixIconColor;
+  final IconData? prefixIcon;
+  final Color? prefixIconColor;
 
-  Function(String)? onChange;
+  final Function(String)? onChange;
 
-  Color borderEnableColor;
-  Color borderFocuseColor;
-  double borderRadius;
+  final Color borderEnableColor;
+  final Color borderFocuseColor;
+  final double borderRadius;
 
-  Color? cursorColor;
+  final Color? cursorColor;
 
-  bool? isHidden;
+  final bool? isHidden;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
