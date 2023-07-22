@@ -15,7 +15,10 @@ class CustomFormTextField extends StatelessWidget {
       required this.borderFocuseColor,
       required this.borderRadius,
       this.onChange,
-      this.isHidden = false});
+      this.isHidden = false,
+      this.maxLines = 1});
+
+  final int maxLines;
 
   String? hintText;
   Color? hintColor;
@@ -38,6 +41,7 @@ class CustomFormTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       cursorColor: cursorColor,
       obscureText: isHidden!,
       validator: (data) {
