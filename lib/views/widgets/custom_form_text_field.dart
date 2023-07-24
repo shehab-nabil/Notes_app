@@ -48,6 +48,7 @@ class CustomFormTextField extends StatelessWidget {
         if (data!.isEmpty) {
           return "can't be empty";
         }
+        return null;
       },
       onChanged: onChange,
       decoration: InputDecoration(
