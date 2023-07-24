@@ -8,49 +8,85 @@ class CustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 32,
-            ),
-            CustomFormTextField(
-                hintText: 'Title',
-                hintColor: Colors.grey.shade400,
-                cursorColor: Colors.grey.shade400,
-                borderEnableColor: Colors.white,
-                borderFocuseColor: Colors.grey.shade400,
-                borderRadius: 20),
-            const SizedBox(
-              height: 25,
-            ),
-            CustomFormTextField(
-                hintText: 'content',
-                maxLines: 8,
-                hintColor: Colors.grey.shade400,
-                cursorColor: Colors.grey.shade400,
-                borderEnableColor: Colors.white,
-                borderFocuseColor: Colors.grey.shade400,
-                borderRadius: 20),
-            const SizedBox(
-              height: 55,
-            ),
-            CustomCircularButtom(
-              width: MediaQuery.of(context).size.width,
-              height: 55,
-              label: 'Add',
-              backgroundColor: Colors.grey.shade400,
-              fontColor: Colors.black,
-              radius: 15,
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, subTitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      autovalidateMode: autovalidateMode,
+      key: formKey,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 32,
+          ),
+          CustomFormTextField(
+              onSaved: (value) {
+                title = value;
+              },
+              hintText: 'Title',
+              hintColor: Colors.grey.shade400,
+              cursorColor: Colors.grey.shade400,
+              borderEnableColor: Colors.white,
+              borderFocuseColor: Colors.grey.shade400,
+              borderRadius: 20),
+          const SizedBox(
+            height: 25,
+          ),
+          CustomFormTextField(
+              onSaved: (value) {
+                subTitle = value;
+              },
+              hintText: 'content',
+              maxLines: 8,
+              hintColor: Colors.grey.shade400,
+              cursorColor: Colors.grey.shade400,
+              borderEnableColor: Colors.white,
+              borderFocuseColor: Colors.grey.shade400,
+              borderRadius: 20),
+          const SizedBox(
+            height: 55,
+          ),
+          CustomCircularButtom(
+            width: MediaQuery.of(context).size.width,
+            height: 55,
+            label: 'Add',
+            backgroundColor: Colors.grey.shade400,
+            fontColor: Colors.black,
+            radius: 15,
+            onTap: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+        ],
       ),
     );
   }

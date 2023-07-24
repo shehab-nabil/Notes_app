@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomCircularButtom extends StatelessWidget {
-  CustomCircularButtom(
+  const CustomCircularButtom(
       {super.key,
       required this.label,
       this.width = double.infinity,
@@ -17,7 +17,7 @@ class CustomCircularButtom extends StatelessWidget {
   final double width;
   final Color fontColor;
   final double radius;
-  VoidCallback onTap;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
