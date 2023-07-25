@@ -10,7 +10,8 @@ class CustomCircularButtom extends StatelessWidget {
       this.backgroundColor = Colors.white,
       this.fontColor = Colors.white,
       this.radius = 10,
-      required this.onTap});
+      required this.onTap,
+      this.isLoading = false});
   final String label;
   final Color backgroundColor;
   final double height;
@@ -18,6 +19,7 @@ class CustomCircularButtom extends StatelessWidget {
   final Color fontColor;
   final double radius;
   final void Function() onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +32,25 @@ class CustomCircularButtom extends StatelessWidget {
         ),
         width: width,
         height: height,
-        child: Center(
-            child: Text(
-          label,
-          style: TextStyle(
-            color: fontColor,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        )),
+        child: isLoading
+            ? const Center(
+                child: SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                ),
+              )
+            : Center(
+                child: Text(
+                label,
+                style: TextStyle(
+                  color: fontColor,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
       ),
     );
   }
