@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomFormTextField extends StatelessWidget {
-  CustomFormTextField(
+  const CustomFormTextField(
       {super.key,
       this.hintText,
       this.cursorColor,
@@ -38,7 +38,7 @@ class CustomFormTextField extends StatelessWidget {
   final double borderRadius;
 
   final Color? cursorColor;
-  String? initialValue;
+  final String? initialValue;
   final bool? isHidden;
   @override
   Widget build(BuildContext context) {
