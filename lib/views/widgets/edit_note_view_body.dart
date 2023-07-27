@@ -21,58 +21,60 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 60,
-          ),
-          CustomAppBar(
-              title: 'Edit Note',
-              icon: Icons.check,
-              onpressed: () {
-                widget.note.title = title ?? widget.note.title;
-                widget.note.subTitle = content ?? widget.note.subTitle;
-                widget.note.save();
-                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                Navigator.pop(context);
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const SizedBox(
-            height: 32,
-          ),
-          CustomFormTextField(
-              onChange: (value) {
-                title = value;
-              },
-              initialValue: widget.note.title,
-              hintColor: Colors.grey.shade400,
-              cursorColor: Colors.grey.shade400,
-              borderEnableColor: Colors.white,
-              borderFocuseColor: Colors.grey.shade400,
-              borderRadius: 20),
-          const SizedBox(
-            height: 25,
-          ),
-          CustomFormTextField(
-              onChange: (value) {
-                content = value;
-              },
-              initialValue: widget.note.subTitle,
-              maxLines: 8,
-              hintColor: Colors.grey.shade400,
-              cursorColor: Colors.grey.shade400,
-              borderEnableColor: Colors.white,
-              borderFocuseColor: Colors.grey.shade400,
-              borderRadius: 20),
-          const SizedBox(
-            height: 55,
-          ),
-          EditNoteColor(
-            note: widget.note,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 60,
+            ),
+            CustomAppBar(
+                title: 'Edit Note',
+                icon: Icons.check,
+                onpressed: () {
+                  widget.note.title = title ?? widget.note.title;
+                  widget.note.subTitle = content ?? widget.note.subTitle;
+                  widget.note.save();
+                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                  Navigator.pop(context);
+                }),
+            const SizedBox(
+              height: 10,
+            ),
+            const SizedBox(
+              height: 32,
+            ),
+            CustomFormTextField(
+                onChange: (value) {
+                  title = value;
+                },
+                initialValue: widget.note.title,
+                hintColor: Colors.grey.shade400,
+                cursorColor: Colors.grey.shade400,
+                borderEnableColor: Colors.white,
+                borderFocuseColor: Colors.grey.shade400,
+                borderRadius: 20),
+            const SizedBox(
+              height: 25,
+            ),
+            CustomFormTextField(
+                onChange: (value) {
+                  content = value;
+                },
+                initialValue: widget.note.subTitle,
+                maxLines: 8,
+                hintColor: Colors.grey.shade400,
+                cursorColor: Colors.grey.shade400,
+                borderEnableColor: Colors.white,
+                borderFocuseColor: Colors.grey.shade400,
+                borderRadius: 20),
+            const SizedBox(
+              height: 55,
+            ),
+            EditNoteColor(
+              note: widget.note,
+            ),
+          ],
+        ),
       ),
     );
   }
